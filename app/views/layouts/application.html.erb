@@ -13,8 +13,9 @@
 
   <body>
     <%= render 'layouts/navbar' %>
-    <%= render 'layouts/header' %>
     <%= render 'layouts/messages' %>
-    <%= yield %>
+    <div class="container pt-4">
+      <%= yield %>
+    </div>
   </body>
 </html>

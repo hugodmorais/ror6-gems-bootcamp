@@ -19,6 +19,12 @@
               Courses
             <% end %>
           </li>
+          <li class="nav-item">
+            <%= link_to new_course_path, class: 'nav-link' do %>
+              <i class="far fa-plus-square"></i>
+              New Course
+            <% end %>
+          </li>
         </ul>
         <%= form_tag(courses_path, method: :get, class: 'd-flex') do %>
           <%= text_field_tag(:title, params[:title], class: "form-control me-2") %>

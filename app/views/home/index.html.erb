@@ -1,4 +1,73 @@
-<%= link_to courses_path, class: 'btn btn-success' do %>
-  <i class="far fa-address-book"></i>
-  Courses
-<% end %>
+<div class="row align-items-md-stretch">
+  <div class="col-md-12">
+    <div class="h-100 p-5 text-white bg-dark rounded-3">
+      <h2>What do you want to learn today?</h2>
+      <div class="col-md-4 pt-4 pb-4">
+        <%= form_tag(courses_path, method: :get, class: 'd-flex') do %>
+          <%= text_field_tag(:title, params[:title], class: "form-control me-2") %>
+          <%= submit_tag ("Search"), class: "btn btn-outline-success" %>
+        <% end %>
+      </div>
+      <button class="btn btn-outline-light" type="button">Example button</button>
+    </div>
+  </div>
+</div>
+
+<div class="card-group pt-3">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-graduation-cap fa-2x"></i></h5>
+      <p class="card-text"><%= Course.all.count %> This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-chalkboard-teacher fa-2x"></i></h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-user-graduate fa-2x"></i></h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><i class="fas fa-infinity fa-2x"></i></h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+</div>
+
+<hr>
+<h2>Popular courses</h2>
+<div class="row">
+  <% @courses.each do |course| %>
+    <div class="col-sm-4 pt-4">
+      <%= render 'courses/course', course: course %>
+    </div>
+  <% end %>
+</div>
+<hr>
+<h2>Top rated courses</h2>
+<div class="row">
+  <% @courses.each do |course| %>
+    <div class="col-sm-4 pt-4">
+      <%= render 'courses/course', course: course %>
+    </div>
+  <% end %>
+</div>
+<hr>
+<h2>Latest courses</h2>
+<div class="row">
+  <% @latest_courses.each do |course| %>
+    <div class="col-sm-4 pt-4">
+      <%= render 'courses/course', course: course %>
+    </div>
+  <% end %>
+</div>
+<hr>
