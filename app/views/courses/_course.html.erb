@@ -1,13 +1,18 @@
 <div class="card">
   <div class="card-header">
-    <i class="fas fa-book"></i> <%= link_to course.title, course_path(course) %>
+    <i class="fa fa-graduation-cap"></i> <%= link_to course.title, course_path(course) %>
   </div>
   <div class="card-body">
-    <p class="card-text"><%= course.description %></p>
+    <%= course.short_description.truncate(50) %>
+  </div>
+  <div class="card-footer d-flex justify-content-between">
+    <div><i class="fa fa-globe-africa"></i> <%= course.language %></div>
+    <div><i class="fa fa-signal"></i> <%= course.level %></div>
+    <div><i class="fas fa-chalkboard-teacher"></i> <%= number_to_currency(course.price) %></div>
   </div>
   <div class="card-footer">
     <p>
-      <i class="fas fa-stopwatch"></i> <%= course.created_at %>
+      <i class="fas fa-stopwatch"></i> <%= course.created_at.strftime('%d-%b-%Y') %>
     </p>
     <p>
       <i class="fas fa-chalkboard-teacher"></i> <%= course.user %>
