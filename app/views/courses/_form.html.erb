@@ -9,8 +9,8 @@
     <%= f.rich_text_area :description %>
     <small><%= f.error :description, class: 'text-danger' %></small>
     <%= f.input :short_description %>
-    <%= f.input :language, collection: ['English', 'Portuguese', 'Polish'] %>
-    <%= f.input :level, collection: ['Beginner', 'Intermediate', 'Advanced'] %>
+    <%= f.input :language, collection: Course.languages, include_blank: true %>
+    <%= f.input :level, collection: Course.levels, include_blank: true %>
     <%= f.input :price %>
   </div>
 
