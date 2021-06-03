@@ -32,10 +32,12 @@
             <% end %>
           </li>
         </ul>
-        <%= form_tag(courses_path, method: :get, class: 'd-flex') do %>
-          <%= text_field_tag(:title, params[:title], class: "form-control me-2") %>
+        
+        <%= search_form_for @ransack_courses, as: :courses_search, url: courses_path, class: 'd-flex' do |f| %>
+          <%= text_field_tag(:title_count, params[:title], class: "form-control me-2") %>
           <%= submit_tag ("Search"), class: "btn btn-outline-success" %>
         <% end %>
+
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
