@@ -2,13 +2,14 @@
   <div class="col-md-12">
     <div class="h-100 p-5 text-white bg-dark rounded-3">
       <h2>What do you want to learn today?</h2>
-      <div class="col-md-4 pt-4 pb-4">
-        <%= form_tag(courses_path, method: :get, class: 'd-flex') do %>
-          <%= text_field_tag(:title, params[:title], class: "form-control me-2") %>
-          <%= submit_tag ("Search"), class: "btn btn-outline-success" %>
-        <% end %>
-      </div>
-      <button class="btn btn-outline-light" type="button">Example button</button>
+      <% if current_user %>
+        <div class="col-md-4 pt-4 pb-4">
+          <%= search_form_for @ransack_courses, as: :courses_search, url: courses_path, class: 'd-flex' do |f| %>
+            <%= f.search_field(:title_cont, class: "form-control me-2", placeholder: 'Find a course') %>
+            <%= submit_tag ("Search"), class: "btn btn-outline-success" %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

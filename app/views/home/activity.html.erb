@@ -1,0 +1,16 @@
+<h2 class="text-center pb-3">Activity <span class="badge bg-info"><%= @activities.count %></span></h2>
+
+<ul class="list-group">
+  <% @activities.each do |activity| %>
+    <li class="list-group-item">
+      <%= activity.id %>
+      <%= activity.trackable_type %>
+      <%= activity.trackable_id %>
+      <%= link_to activity.trackable, activity.trackable %>
+      <%= activity.key %>
+      <%= activity.parameters %>
+      <%= activity.owner %>
+    </li>
+  <% end %>
+</ul>
+

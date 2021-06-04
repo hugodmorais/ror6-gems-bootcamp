@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Users</h1>
-<div class="row pt-2">
+<h2 class="text-center pb-3">Users <span class="badge bg-info"><%= @users.count %></span></h2>
+
+<div class="row py-4">
   <% @users.each do |user| %>
     <div class="col-sm-4 pt-4">
       <%= render 'user', user: user %>
