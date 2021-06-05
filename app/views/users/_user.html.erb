@@ -12,11 +12,15 @@
     <%= 'current_sign_in_ip'.humanize %> <%= user.current_sign_in_ip %> <br>
     <%= 'last_sign_in_ip'.humanize %> <%= user.last_sign_in_ip %> <br>
     Confirmed email? 
-    <%= user.confirmed_at.present? %>
     <% if user.confirmed_at.present? %>
       <button type="button" class="btn btn-success btn-sm" disabled>Yes</button>
     <% else %>
       <button type="button" class="btn btn-danger btn-sm" disabled>No</button>
+    <% end %>
+  </div>
+  <div class="card-footer">
+    <% user.roles.each do |role| %>
+      <button type="button" class="btn btn-info btn-sm" disabled><%= role.name %></button>
     <% end %>
   </div>
 </div>
