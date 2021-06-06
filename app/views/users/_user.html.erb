@@ -22,6 +22,6 @@
     <% user.roles.each do |role| %>
       <button type="button" class="btn btn-info btn-sm" disabled><%= role.name %></button>
     <% end %>
-    <%= link_to 'Edit roles', edit_user_path(user), class: "btn btn-warning btn-sm" %>
+    <%= link_to 'Edit roles', edit_user_path(user), class: "btn btn-warning btn-sm" if policy(user).edit? %>
   </div>
 </div>
