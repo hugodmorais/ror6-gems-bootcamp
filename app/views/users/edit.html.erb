@@ -1,0 +1,29 @@
+<div class="card mt-2">
+  <div class="card-header">
+    Editing roles for
+    <%= link_to @user.email %>
+  </div>
+  <div class="card-body">
+    <%= simple_form_for @user do |f| %>      
+      <%= f.collection_check_boxes(:role_ids, Role.all, :id, :name) do |b| %>
+        <div class="row">
+          <%= b.label(class: "check_box") do %>
+            <div class="col-xs-4">
+              <%= b.check_box(class: "check_box") %>
+            </div>
+
+            <div class="col-xs-6">
+              <%= b.object.name %>
+            </div>       
+          <% end %>
+        </div>
+      <% end %>
+      <%= f.error :roles, class: 'text-danger' %>
+      <hr/>
+      <%= f.button :submit, class: 'btn btn-success' %>
+    <% end %>
+  </div>
+  <div class="card-footer">
+    <%= link_to 'Cancel', users_path, class: 'btn btn-danger' %>
+  </div>
+</div>

@@ -2,7 +2,7 @@
 
 <h2 class="text-center pb-3">Users <span class="badge bg-info"><%= @users.count %></span></h2>
 
-<div class="row py-4">
+<div class="row py-2">
   <% @users.each do |user| %>
     <div class="col-sm-4 pt-4">
       <%= render 'user', user: user %>
@@ -38,8 +38,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <% @users.each do |user| %>
+      <% @users.each do |user| %>
+        <tr>
           <th><%= user.id %></th>
           <td><%= user.email %></td>
           <td><%= user.created_at %></td>
@@ -48,8 +48,8 @@
           <td><%= user.last_sign_in_ip %></td>
           <td><%= user.current_sign_in_ip %></td>
           <td><%= user.last_sign_in_ip %></td>
-        <% end %>
-      </tr>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 </div>
