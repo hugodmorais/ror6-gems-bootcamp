@@ -8,6 +8,15 @@ class User < ApplicationRecord
   has_many :courses
   after_create :assign_default_role
 
+  extend FriendlyId
+  friendly_id :generate_slug, use: :slugged
+
+  def generate_slug
+    require 'securerandom'
+    
+    @random_slug ||= persisted? ? friendly_id : SecureRandom.hex(4)
+  end
+
   validate :must_have_a_role, on: :update
 
   def to_s

@@ -1,6 +1,8 @@
 <div class="card">
   <div class="card-header">
-    <i class="fas fa-user"></i> <%= user.email %>
+    <%= link_to user_path(user) do %>
+      <i class="fas fa-user"></i> <%= user.email %>
+    <% end %>
   </div>
   <div class="card-body">
     <i class="fas fa-stopwatch"></i> Sign Up <%= time_ago_in_words(user.created_at) %> ago
