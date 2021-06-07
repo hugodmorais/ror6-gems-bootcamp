@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :set_global_variables, if: :user_signed_in?
+  after_action :user_activity
 
   include Pundit
 
@@ -13,6 +14,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def user_activity
+    current_user.try :touch
+  end
 
   def user_not_authorized
     flash[:alert] = 'You are not authorized to perform this action.'
