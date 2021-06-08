@@ -5,8 +5,10 @@
 
   <div class="form-inputs">
     <%= f.input :title %>
-    <%= f.input :content %>
-    <%= f.association :course %>
+    <%= f.label :content %>
+    <%= f.rich_text_area :content %>
+    <small><%= f.error :content, class: 'text-danger' %></small>
+    <%= f.input :course_id, input_html: { value: @lesson.course_id || params[:course_id]}, as: :hidden %>
   </div>
 
   <div class="form-actions pt-2">
