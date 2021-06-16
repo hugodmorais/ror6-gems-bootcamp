@@ -1,6 +1,6 @@
 <div class="card mt-2">
   <div class="card-header">
-    <%= link_to lesson.title, lesson_path(lesson) %>
+    <%= link_to lesson.title, course_lesson_path(@course, lesson) %>
   </div>
   <% if policy(lesson).show? %>
     <div class="card-body">
@@ -10,8 +10,8 @@
   <% end %>
   <% if policy(lesson).edit? %>
     <div class="card-footer">
-      <%= link_to 'Edit', edit_lesson_path(lesson), class: 'btn btn-sm btn-warning' %>
-      <%= link_to 'Destroy', lesson, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+      <%= link_to 'Edit', edit_course_lesson_path(@course, lesson), class: 'btn btn-sm btn-warning' %>
+      <%= link_to 'Destroy', [@course, lesson], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
     </div>
   <% end %>
 </div>
