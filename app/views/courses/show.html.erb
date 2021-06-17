@@ -3,11 +3,13 @@
 </p> 
 
 <div class="row">
-  <div class="col-lg-6">
+  <div class="col-md-6">
     <%= render 'courses/course', course: @course %>
   </div>
-  <div class="col-lg-6">
-    <%= link_to 'Add lesson', new_course_lesson_path(course_id: @course.id) %>
+  <div class="col-md-6">
+    <div class="row px-2">
+      <%= link_to 'Add lesson', new_course_lesson_path(course_id: @course.id), class: 'btn btn-sm btn-primary btn-block' %>
+    </div>
     <% @lessons.each do |lesson| %>
       <%= render 'lessons/lesson', lesson: lesson %>
     <% end %>

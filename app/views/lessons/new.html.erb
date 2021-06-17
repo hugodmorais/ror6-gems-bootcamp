@@ -1,5 +1,13 @@
-<h1>New Lesson</h1>
+<div class="card">
+  <div class="card-header">
+    <h1>New lesson</h1>
+  </div>
+  <div class="card-body">
+    <%= render 'form', lesson: @lesson %>
+  </div>
+  <div class="card-footer">
+    <%= link_to 'Back', course_lessons_path %>
+  </div>
+</div>
 
-<%= render 'form', lesson: @lesson %>
 
-<%= link_to 'Back', course_lessons_path %>

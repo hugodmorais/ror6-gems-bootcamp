@@ -51,7 +51,7 @@ class LessonsController < ApplicationController
     authorize @lesson
     @lesson.destroy
     respond_to do |format|
-      format.html { redirect_to lessons_url, notice: "Lesson was successfully destroyed." }
+      format.html { redirect_to course_path(@course), notice: "Lesson was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -63,6 +63,6 @@ class LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.require(:lesson).permit(:title, :content, :course_id)
+    params.require(:lesson).permit(:title, :content)
   end
 end
