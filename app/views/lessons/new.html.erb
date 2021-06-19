@@ -1,12 +1,20 @@
+<p>
+  <%= link_to 'Courses', courses_path %> 
+  / 
+  <%= link_to @course.title, course_path(@course) %>
+  /
+  New
+</p> 
+
 <div class="card">
   <div class="card-header">
-    <h1>New lesson</h1>
+    <h3><i class="fa fa-check-square"></i> New lesson</h3>
   </div>
   <div class="card-body">
     <%= render 'form', lesson: @lesson %>
   </div>
   <div class="card-footer">
-    <%= link_to 'Back', course_lessons_path %>
+    <%= link_to 'Back to course', course_path(@course) %>
   </div>
 </div>
 

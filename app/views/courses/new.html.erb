@@ -1,12 +1,11 @@
 <div class="card">
   <div class="card-header">
-    <h1>New course</h1>
+    <h3><i class="fa fa-graduation-cap"></i> New Course</h3>
   </div>
   <div class="card-body">
     <%= render 'form', course: @course %>
   </div>
   <div class="card-footer">
-    <%= link_to 'Show lesson', courses_lesson_path(@course, @lesson) %>
     <%= link_to 'Back to course', courses_path %>
   </div>
 </div>
