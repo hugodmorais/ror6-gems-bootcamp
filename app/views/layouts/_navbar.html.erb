@@ -31,6 +31,12 @@
               Users
             <% end %>
           </li>
+          <li class="nav-item">
+            <%= link_to enrollments_path, class: 'nav-link' do %>
+              <i class="fa fa-lock-open"></i>
+              Enrollments
+            <% end %>
+          </li>
         </ul>
         
         <%= search_form_for @ransack_courses, as: :courses_search, url: courses_path, class: 'd-flex' do |f| %>

@@ -9,6 +9,7 @@ class Course < ApplicationRecord
   
   belongs_to :user
   has_many :lessons, dependent: :destroy
+  has_many :enrollments
 
   extend FriendlyId
   friendly_id :generate_slug, use: :slugged

@@ -6,6 +6,7 @@ class User < ApplicationRecord
   
   rolify
   has_many :courses
+  has_many :enrollments
   after_create :assign_default_role
 
   extend FriendlyId
