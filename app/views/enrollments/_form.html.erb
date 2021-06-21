@@ -4,7 +4,7 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :rating %>
+<%= f.input :rating, as: :radio_buttons, item_wrapper_tag: nil, item_label_class: "btn btn-default", collection: 1..5 %>
     <%= f.input :review %>
   </div>
 

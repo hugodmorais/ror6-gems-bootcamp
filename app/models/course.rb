@@ -21,7 +21,7 @@ class Course < ApplicationRecord
   end
 
   def to_s
-    slug
+    title
   end
 
   LANGUAGES = [:"English", :"Russian", :"Polish"]

@@ -6,11 +6,14 @@
 <table class="table table-bordered table-striped table-sm">
   <thead>
     <tr>
-      <th>Course</th>
-      <th>User</th>
-      <th>Rating</th>
-      <th>Review</th>
-      <th>Price</th>
+      <th>ID</th>
+      <th><i class="fa fa-user"></i> User</th>
+      <th><i class="fa fa-clock"></i><i class="fa fa-lock-open"></i> Bought</th>
+      <th><i class="fa fa-graduation-cap"></i> Course</th>
+      <th><i class="fa fa-dollar-sign"></i> Price</th>
+      <th><i class="fa fa-clock" style="color:yellow"></i> Reviewed on</th>
+      <th><i class="fa fa-star" style="color:yellow"></i> Rating</th>
+      <th><i class="fa fa-comment" style="color:yellow"></i> Review</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,14 +21,17 @@
   <tbody>
     <% @enrollments.each do |enrollment| %>
       <tr>
-        <td><%= enrollment.course %></td>
-        <td><%= enrollment.user %></td>
+        <td><%= enrollment.id %></td>
+        <td><%= link_to enrollment.user, user_path(enrollment.user) %></td>
+        <td><%= enrollment.created_at.strftime("%d/%b/%Y - %H:%M") %></td>
+        <td><%= link_to enrollment.course, course_path(enrollment.course) %></td>
+        <td><%= number_to_currency(enrollment.price) %></td>
+        <td><%= enrollment.updated_at.strftime("%d/%b/%Y - %H:%M") if enrollment.rating.present? %></td>
         <td><%= enrollment.rating %></td>
         <td><%= enrollment.review %></td>
-        <td><%= number_to_currency(enrollment.price) %></td>
-        <td><%= link_to 'Show', enrollment %></td>
-        <td><%= link_to 'Edit', edit_enrollment_path(enrollment) %></td>
-        <td><%= link_to 'Destroy', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'See Review', enrollment %></td>
+        <td><%= link_to 'Add Review', edit_enrollment_path(enrollment) %></td>
+        <td><%= link_to 'Delete Enrollment', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
