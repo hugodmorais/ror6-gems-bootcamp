@@ -6,7 +6,12 @@
     <%= course.short_description.truncate(50) %>
   </div>
   <div class="card-footer text-center">
-    <%= enrollment_button(course) %>
+    <div class="row text-center">
+      <%= enrollment_button(course) %>
+    </div>
+    <div class="row text-center">
+      <%= review_button(course) %>
+    </div>
   </div>
   <div class="card-footer">
     <i class="fa fa-tasks"></i> <%= course.lessons.count %>
