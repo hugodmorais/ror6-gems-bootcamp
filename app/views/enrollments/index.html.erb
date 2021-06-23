@@ -2,15 +2,27 @@
 
 <h2 class="text-center pb-3">Enrollments <span class="badge bg-info"><%= @enrollments.count %></span></h2>
 
+<div class="row pt-2">
+  <%= search_form_for @q do |f| %>
+
+    <%= f.search_field :review_cont, placeholder: 'review' %>
+    <%= f.search_field :rating_eq, placeholder: 'rating' %>
+    <%= f.submit %>
+    <%= link_to enrollments_path, class: 'btn btn-sm btn-primary mb-1' do %>
+      <i class="fa fa-sync"></i>
+    <% end %>
+  <% end %>
+</div>
+
 <div class="table-responsive">
 <table class="table table-bordered table-striped table-sm">
   <thead>
     <tr>
       <th>ID</th>
-      <th><i class="fa fa-user"></i> User</th>
-      <th><i class="fa fa-clock"></i><i class="fa fa-lock-open"></i> Bought</th>
-      <th><i class="fa fa-graduation-cap"></i> Course</th>
-      <th><i class="fa fa-dollar-sign"></i> Price</th>
+      <th><%= sort_link(@q, :user_email) %></th>
+      <th><%= sort_link(@q, :created_at) %></th>
+      <th><%= sort_link(@q, :course_title) %></th>
+      <th><%= sort_link(@q, :price) %></th>
       <th><i class="fa fa-clock" style="color:yellow"></i> Reviewed on</th>
       <th><i class="fa fa-star" style="color:yellow"></i> Rating</th>
       <th><i class="fa fa-comment" style="color:yellow"></i> Review</th>

@@ -3,7 +3,8 @@ class EnrollmentsController < ApplicationController
   before_action :set_course, only: %i[new create]
 
   def index
-    @pagy, @enrollments = pagy(Enrollment.all)
+    @q = Enrollment.ransack(params[:q])
+    @pagy, @enrollments = pagy(@q.result.includes(:user))
     authorize @enrollments
   end
 
