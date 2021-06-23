@@ -13,44 +13,82 @@
               Home
             <% end %>
           </li>
-          <li class="nav-item">
+          <% if current_user.has_role?(:student) %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-graduation-cap"></i>
+                Learn
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li class="nav-item">
+                  
+                </li>
+              </ul>
+            </li>
+          <% end %>
+          <% if current_user.has_role?(:teacher) %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-chalkboard-teacher"></i>
+                Teach
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li class="nav-item">
+                  <%= link_to new_course_path, class: 'dropdown-item' do %>
+                    <i class="far fa-plus-square"></i>
+                    New Course
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+          <% end %>
+          <% if current_user.has_role?(:admin) %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-cog"></i>
+                Admin
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <%= link_to users_path, class: 'dropdown-item' do %>
+                    <i class="fa fa-users"></i>
+                    Users
+                  <% end %>
+                </li>
+                <hr>
+                <li class="nav-item">
+                  <%= link_to enrollments_path, class: 'dropdown-item' do %>
+                    <i class="fa fa-lock-open"></i>
+                    Enrollments
+                  <% end %>
+                </li>
+                <hr>
+                <li class="nav-item">
+                  <%= link_to activity_path, class: 'dropdown-item' do %>
+                    <i class="fa fa-bell"></i>
+                    Activity
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+          <% end %>
+        </ul>
+
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
             <%= link_to courses_path, class: 'nav-link' do %>
               <i class="fas fa-book"></i>
               Courses
             <% end %>
           </li>
-          <li class="nav-item">
-            <%= link_to new_course_path, class: 'nav-link' do %>
-              <i class="far fa-plus-square"></i>
-              New Course
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to users_path, class: 'nav-link' do %>
-              <i class="fa fa-users"></i>
-              Users
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to enrollments_path, class: 'nav-link' do %>
-              <i class="fa fa-lock-open"></i>
-              Enrollments
-            <% end %>
-          </li>
         </ul>
-        
+
         <%= search_form_for @ransack_courses, as: :courses_search, url: courses_path, class: 'd-flex' do |f| %>
           <%= f.search_field(:title_cont, class: "form-control me-2", placeholder: 'Find a course') %>
           <%= submit_tag ("Search"), class: "btn btn-outline-success" %>
         <% end %>
 
         <ul class="navbar-nav mb-2 mb-lg-0">
-          <li class="nav-item">
-            <%= link_to home_activity_path, class: 'nav-link' do %>
-              <i class="fa fa-bell"></i>
-              Activity
-            <% end %>
-          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <%= current_user.email %>

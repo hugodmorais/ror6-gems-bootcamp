@@ -4,6 +4,9 @@ class Enrollment < ApplicationRecord
 
   validates :user, :course, presence: true
 
+  validates_uniqueness_of :rating, if: :review?
+  validates_uniqueness_of :review, if: :rating?
+
   validates_uniqueness_of :user_id, scope: :course_id
   validates_uniqueness_of :course_id, scope: :user_id
 
