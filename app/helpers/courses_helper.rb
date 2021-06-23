@@ -22,8 +22,7 @@ module CoursesHelper
         if user_course.pending_review.any?
           link_to 'Add a review', edit_enrollment_path(user_course.first)
         else
-          content_tag(:div, 'You have left a review, thanks!')
-          link_to 'Add a review', edit_enrollment_path(user_course.first)
+          link_to 'Thanks for reviewing! Your Review', edit_enrollment_path(user_course.first)
         end
       end
     end
