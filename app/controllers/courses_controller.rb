@@ -65,6 +65,11 @@ class CoursesController < ApplicationController
     end
   end
 
+  def purchased
+    @pagy, @courses = pagy(Course.joins(:enrollments).where(enrollments: { user: current_user }))
+    render 'index'
+  end
+
   private
   
   def set_course

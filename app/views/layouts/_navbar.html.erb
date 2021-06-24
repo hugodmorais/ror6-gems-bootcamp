@@ -21,7 +21,10 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li class="nav-item">
-                  
+                  <%= link_to purchased_courses_path, class: 'dropdown-item' do %>
+                    <i class="fa fa-graduation-cap"></i>
+                    Purchased Courses
+                  <% end %>
                 </li>
               </ul>
             </li>
