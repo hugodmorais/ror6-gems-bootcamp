@@ -26,6 +26,13 @@
                     Purchased Courses
                   <% end %>
                 </li>
+                <hr>
+                <li class="nav-item">
+                  <%= link_to pending_review_courses_path, class: 'dropdown-item' do %>
+                    <i class="fa fa-star"></i>
+                    Pending Review
+                  <% end %>
+                </li>
               </ul>
             </li>
           <% end %>
@@ -40,6 +47,20 @@
                   <%= link_to new_course_path, class: 'dropdown-item' do %>
                     <i class="far fa-plus-square"></i>
                     New Course
+                  <% end %>
+                </li>
+                <hr>
+                <li class="nav-item">
+                  <%= link_to created_courses_courses_path, class: 'dropdown-item' do %>
+                    <i class="fa fa-graduation-cap"></i>
+                    My Courses
+                  <% end %>
+                </li>
+                <hr>
+                <li class="nav-item">
+                  <%= link_to my_students_enrollments_path, class: 'dropdown-item' do %>
+                    <i class="fa fa-users"></i>
+                    My Students
                   <% end %>
                 </li>
               </ul>

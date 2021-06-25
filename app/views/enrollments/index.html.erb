@@ -3,12 +3,12 @@
 <h2 class="text-center pb-3">Enrollments <span class="badge bg-info"><%= @enrollments.count %></span></h2>
 
 <div class="row pt-2">
-  <%= search_form_for @q do |f| %>
+  <%= search_form_for @q, url: @ransack_path do |f| %>
 
     <%= f.search_field :review_cont, placeholder: 'review' %>
     <%= f.search_field :rating_eq, placeholder: 'rating' %>
     <%= f.submit %>
-    <%= link_to enrollments_path, class: 'btn btn-sm btn-primary mb-1' do %>
+    <%= link_to @ransack_path, class: 'btn btn-sm btn-primary mb-1' do %>
       <i class="fa fa-sync"></i>
     <% end %>
   <% end %>

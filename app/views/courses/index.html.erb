@@ -3,7 +3,7 @@
 <h2 class="text-center pb-3">Courses <span class="badge bg-info"><%= @courses.count %></span></h2>
 <div class="row">
   <div class="col-md-2 mt-2">
-    <%= search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f| %>
+    <%= search_form_for @ransack_courses, as: :courses_search, url: @ransack_path do |f| %>
       <%= f.label :title %>
       <%= f.search_field :title_cont, placeholder: 'title', class: 'form-control form-control-sm' %>
       <%= f.label :description %>
@@ -24,7 +24,7 @@
       <%= f.search_field :user_email_cont, placeholder: 'email', class: 'form-control form-control-sm' %>
 
       <%= f.submit %>
-      <%= link_to courses_path, class: 'btn btn-sm btn-primary mb-1' do %>
+      <%= link_to @ransack_path, class: 'btn btn-sm btn-primary mb-1' do %>
         <i class="fa fa-sync"></i>
       <% end %>
     <% end %>
