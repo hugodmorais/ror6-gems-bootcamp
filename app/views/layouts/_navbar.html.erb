@@ -24,6 +24,9 @@
                   <%= link_to purchased_courses_path, class: 'dropdown-item' do %>
                     <i class="fa fa-graduation-cap"></i>
                     Purchased Courses
+                    <span class="badge" style="background-color: red;">
+                      <%= current_user.enrollments.count %>
+                    </span>
                   <% end %>
                 </li>
                 <hr>
@@ -31,6 +34,9 @@
                   <%= link_to pending_review_courses_path, class: 'dropdown-item' do %>
                     <i class="fa fa-star"></i>
                     Pending Review
+                    <span class="badge" style="background-color: red;">
+                      <%= current_user.enrollments.pending_review.count %>
+                    </span>
                   <% end %>
                 </li>
               </ul>
@@ -54,6 +60,9 @@
                   <%= link_to created_courses_courses_path, class: 'dropdown-item' do %>
                     <i class="fa fa-graduation-cap"></i>
                     My Courses
+                    <span class="badge" style="background-color: red;">
+                      <%= current_user.courses.count %>
+                    </span>
                   <% end %>
                 </li>
                 <hr>
@@ -61,6 +70,9 @@
                   <%= link_to my_students_enrollments_path, class: 'dropdown-item' do %>
                     <i class="fa fa-users"></i>
                     My Students
+                    <span class="badge" style="background-color: red;">
+                      <%= Enrollment.joins(:course).where(courses: { user: current_user }).count %>
+                    </span>
                   <% end %>
                 </li>
               </ul>
@@ -77,6 +89,9 @@
                   <%= link_to users_path, class: 'dropdown-item' do %>
                     <i class="fa fa-users"></i>
                     Users
+                    <span class="badge" style="background-color: red;">
+                      <%= User.count %>
+                    </span>
                   <% end %>
                 </li>
                 <hr>
@@ -84,6 +99,9 @@
                   <%= link_to enrollments_path, class: 'dropdown-item' do %>
                     <i class="fa fa-lock-open"></i>
                     Enrollments
+                    <span class="badge" style="background-color: red;">
+                      <%= Enrollment.count %>
+                    </span>
                   <% end %>
                 </li>
                 <hr>
