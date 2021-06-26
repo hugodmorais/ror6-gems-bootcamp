@@ -7,9 +7,11 @@
     <%= render 'courses/course', course: @course %>
   </div>
   <div class="col-md-6">
-    <div class="row px-2">
-      <%= link_to 'Add lesson', new_course_lesson_path(course_id: @course.id), class: 'btn btn-sm btn-primary btn-block' %>
-    </div>
+    <% if policy(@course).owner? %>
+      <div class="row px-2">
+        <%= link_to 'Add lesson', new_course_lesson_path(course_id: @course.id), class: 'btn btn-sm btn-primary btn-block' %>
+      </div>
+    <% end %>
     <% @lessons.each do |lesson| %>
       <%= render 'lessons/lesson', lesson: lesson %>
     <% end %>

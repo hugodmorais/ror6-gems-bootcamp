@@ -26,6 +26,8 @@
           <th scope="col"><%= 'last_sign_in_ip'.humanize %></th>
           <th scope="col"><%= 'current_sign_in_ip'.humanize %></th>
           <th scope="col"><%= 'last_sign_in_ip'.humanize %></th>
+          <th scope="col"><%= 'courses_count'.humanize %></th>
+          <th scope="col"><%= 'enrollments_count'.humanize %></th>
           <th scope="col"><%= 'confirmed'.humanize %></th>
           <th scope="col"><%= 'roles'.humanize %></th>
         </tr>
@@ -34,7 +36,11 @@
         <% @users.each do |user| %>
           <tr>
             <th><%= user.id %></th>
-            <td><%= user.email %></td>
+            <td>
+              <%= link_to user_path(user) do %> 
+                <%= user.email %>
+              <% end %>
+            </td>
             <td><%= user.created_at %></td>
             <td><%= user.sign_in_count %></td>
             <td><%= user.current_sign_in_at %></td>
@@ -42,6 +48,8 @@
             <td><%= user.current_sign_in_ip %></td>
             <td><%= user.last_sign_in_ip %></td>
             <td><%= user.confirmed_at? %></td>
+            <td><%= user.courses_count %></td>
+            <td><%= user.enrollments_count %></td>
             <td>
               <table>
                 <% user.roles.each do |role| %>

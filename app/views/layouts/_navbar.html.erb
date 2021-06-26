@@ -25,7 +25,7 @@
                     <i class="fa fa-graduation-cap"></i>
                     Purchased Courses
                     <span class="badge" style="background-color: red;">
-                      <%= current_user.enrollments.count %>
+                      <%= current_user.enrollments_count %>
                     </span>
                   <% end %>
                 </li>
@@ -61,7 +61,7 @@
                     <i class="fa fa-graduation-cap"></i>
                     My Courses
                     <span class="badge" style="background-color: red;">
-                      <%= current_user.courses.count %>
+                      <%= current_user.courses_count %>
                     </span>
                   <% end %>
                 </li>

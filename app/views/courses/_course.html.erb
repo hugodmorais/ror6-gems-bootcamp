@@ -15,11 +15,11 @@
   </div>
   <div class="card-footer">
     <i class="fa fa-star" style="color:yellow"></i> <%= course.average_rating %>
-    Counter cache enrollments count:
-    <%= course.enrollments_count %>
+    (<i class="fa fa-user-graduate"></i>
+    <%= course.enrollments_count %>)
   </div>
   <div class="card-footer">
-    <i class="fa fa-tasks"></i> <%= course.lessons.count %>
+    <i class="fa fa-tasks"></i> <%= course.lessons_count %>
   </div>
   <div class="card-footer d-flex justify-content-between">
     <div><i class="fa fa-globe-africa"></i> <%= course.language %></div>

@@ -18,6 +18,16 @@
     <i class="fas fa-stopwatch"></i> Sign Up <%= time_ago_in_words(user.created_at) %> ago
   </div>
   <div class="card-footer">
+    <div class="row">
+      Courses created:
+      <%= user.courses_count %>
+    </div>
+    <div class="row">
+      Enrollments:
+      <%= user.enrollments_count %>
+    </div>
+  </div>
+  <div class="card-footer">
     <%= 'sign_in_count'.humanize %> <%= user.sign_in_count %> <br>
     <%= 'current_sign_in_at'.humanize %> <%= user.current_sign_in_at %> <br>
     <%= 'last_sign_in_at'.humanize %> <%= user.last_sign_in_at %> <br>
