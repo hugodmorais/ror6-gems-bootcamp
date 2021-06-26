@@ -48,7 +48,7 @@
 
 <h2><i class="fa fa-user-graduate"></i> Continue Learning</h2>
 <div class="row">
-  <% @purchased_courses.each do |course| %>
+  <% @purchased.each do |course| %>
     <div class="col-sm-4 pt-4">
       <%= render 'courses/course', course: course %>
     </div>
@@ -57,7 +57,7 @@
 <hr>
 <h2><i class="fa fa-chart-line"></i> Popular courses</h2>
 <div class="row">
-  <% @popular_courses.each do |course| %>
+  <% @popular.each do |course| %>
     <div class="col-sm-4 pt-4">
       <%= render 'courses/course', course: course %>
     </div>
@@ -66,7 +66,7 @@
 <hr>
 <h2><i class="fa fa-star"></i> Top rated courses</h2>
 <div class="row">
-  <% @top_rated_courses.each do |course| %>
+  <% @top_rated.each do |course| %>
     <div class="col-sm-4 pt-4">
       <%= render 'courses/course', course: course %>
     </div>
@@ -75,7 +75,7 @@
 <hr>
 <h2><i class="fa fa-clock"></i> Latest courses</h2>
 <div class="row">
-  <% @latest_courses.each do |course| %>
+  <% @latest.each do |course| %>
     <div class="col-sm-4 pt-4">
       <%= render 'courses/course', course: course %>
     </div>

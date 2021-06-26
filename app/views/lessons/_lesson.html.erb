@@ -1,6 +1,7 @@
 <div class="card mt-2">
   <div class="card-header">
-    <i class="fa fa-check-square"></i> <%= link_to lesson.title, course_lesson_path(@course, lesson) %>
+    <%= lesson.viewed(current_user) ? content_tag(:i, "", class: "fa fa-check-square", style: "color:green;") : content_tag(:i, "", class: "fa fa-times", style: "color:red;") %>
+    <%= link_to lesson.title, course_lesson_path(@course, lesson) %>
   </div>
   <% if policy(lesson).show? %>
     <div class="card-body">
