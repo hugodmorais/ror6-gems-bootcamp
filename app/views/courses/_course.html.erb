@@ -14,25 +14,19 @@
     </div>
   </div>
   <div class="card-footer">
-    <i class="fa fa-star" style="color:yellow"></i> <%= course.average_rating %>
-    (<i class="fa fa-user-graduate"></i>
-    <%= course.enrollments_count %>)
-  </div>
-  <div class="card-footer">
-    <i class="fa fa-tasks"></i> <%= course.lessons_count %>
-  </div>
-  <div class="card-footer d-flex justify-content-between">
-    <div><i class="fa fa-globe-africa"></i> <%= course.language %></div>
-    <div><i class="fa fa-signal"></i> <%= course.level %></div>
-    <div><i class="fas fa-chalkboard-teacher"></i> <%= number_to_currency(course.price) %></div>
-  </div>
-  <div class="card-footer">
-    <p>
-      <i class="fas fa-stopwatch"></i> <%= course.created_at.strftime('%d-%b-%Y') %>
-    </p>
-    <p>
-      <i class="fas fa-chalkboard-teacher"></i> <%= link_to course.user.username, user_path(course.user) %>
-    </p>
+    <div class="row d-flex">
+      <div class="col-md-6">
+        <i class="fa fa-star" style="color:yellow"></i> <%= course.average_rating %>
+        (<i class="fa fa-user-graduate"></i>
+        <%= course.enrollments_count %>)
+        <i class="fa fa-tasks"></i> <%= course.lessons_count %>
+      </div>
+      <div class="col-md-6 d-flex flex-row-reverse">
+        <div class="float-right">
+          <i class="fas fa-chalkboard-teacher"></i> <%= link_to course.user.username, user_path(course.user) %>
+        </div>
+      </div>
+    </div>
   </div>
   <% if current_user.present? %>
     <div class="card-footer">

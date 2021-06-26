@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h2 class="text-center pb-3">Enrollments <span class="badge bg-info"><%= @enrollments.count %></span></h2>
+<h2 class="text-center pb-3"><%= action_name.humanize %> Enrollments <span class="badge bg-info"><%= @enrollments.count %></span></h2>
 
 <div class="row pt-2">
   <%= search_form_for @q, url: @ransack_path do |f| %>

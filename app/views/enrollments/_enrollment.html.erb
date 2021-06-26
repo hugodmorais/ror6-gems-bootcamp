@@ -2,7 +2,7 @@
   <div class="card-header">
     <i class="fa fa-user"></i> <%= link_to enrollment.user.username, user_path(enrollment.user) %>
     <i class="fa fa-clock"></i> <%= time_ago_in_words(enrollment.updated_at) %>
-    <i class="fa fa-graduation-cap"></i> <%= course_path(enrollment.course) %>
+    <i class="fa fa-graduation-cap"></i> <%= link_to enrollment.course, course_path(enrollment.course) %>
   </div>
   
   <div class="card-body">
