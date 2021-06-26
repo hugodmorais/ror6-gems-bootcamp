@@ -45,29 +45,48 @@
 </div>
 
 <hr>
-<h2>Popular courses</h2>
+
+<h2><i class="fa fa-user-graduate"></i> Continue Learning</h2>
 <div class="row">
-  <% @courses.each do |course| %>
+  <% @purchased_courses.each do |course| %>
     <div class="col-sm-4 pt-4">
       <%= render 'courses/course', course: course %>
     </div>
   <% end %>
 </div>
 <hr>
-<h2>Top rated courses</h2>
+<h2><i class="fa fa-chart-line"></i> Popular courses</h2>
 <div class="row">
-  <% @courses.each do |course| %>
+  <% @popular_courses.each do |course| %>
     <div class="col-sm-4 pt-4">
       <%= render 'courses/course', course: course %>
     </div>
   <% end %>
 </div>
 <hr>
-<h2>Latest courses</h2>
+<h2><i class="fa fa-star"></i> Top rated courses</h2>
+<div class="row">
+  <% @top_rated_courses.each do |course| %>
+    <div class="col-sm-4 pt-4">
+      <%= render 'courses/course', course: course %>
+    </div>
+  <% end %>
+</div>
+<hr>
+<h2><i class="fa fa-clock"></i> Latest courses</h2>
 <div class="row">
   <% @latest_courses.each do |course| %>
     <div class="col-sm-4 pt-4">
       <%= render 'courses/course', course: course %>
+    </div>
+  <% end %>
+</div>
+<hr>
+<h2><i class="fa fa-comment"></i> What our students have to say</h2>
+<div class="row">
+  <% @latest_good_reviews.each do |enrollment| %>
+    <div class="col-sm-4 pt-4">
+      <%= render 'enrollments/enrollment', enrollment: enrollment %>
     </div>
   <% end %>
 </div>
