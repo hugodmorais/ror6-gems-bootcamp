@@ -26,6 +26,7 @@
       <th><i class="fa fa-clock" style="color:yellow"></i> Reviewed on</th>
       <th><i class="fa fa-star" style="color:yellow"></i> Rating</th>
       <th><i class="fa fa-comment" style="color:yellow"></i> Review</th>
+      <th>Progress</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -41,6 +42,7 @@
         <td><%= enrollment.updated_at.strftime("%d/%b/%Y - %H:%M") if enrollment.rating.present? %></td>
         <td><%= enrollment.rating %></td>
         <td><%= enrollment.review %></td>
+        <td><%= number_to_percentage(enrollment.course.progress(enrollment.user), precision: 0) %></td>
         <td><%= link_to 'See Review', enrollment %></td>
         <td><%= link_to 'Add Review', edit_enrollment_path(enrollment) %></td>
         <td><%= link_to 'Delete Enrollment', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
