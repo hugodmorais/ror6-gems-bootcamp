@@ -19,9 +19,9 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th><%= sort_link(@q, :user_email) %></th>
+      <th><%= sort_link(@q, :user_email, "User") %></th>
       <th><%= sort_link(@q, :created_at) %></th>
-      <th><%= sort_link(@q, :course_title) %></th>
+      <th><%= sort_link(@q, :course_title, "Course") %></th>
       <th><%= sort_link(@q, :price) %></th>
       <th><i class="fa fa-clock" style="color:yellow"></i> Reviewed on</th>
       <th><i class="fa fa-star" style="color:yellow"></i> Rating</th>
@@ -44,8 +44,12 @@
         <td><%= enrollment.review %></td>
         <td><%= number_to_percentage(enrollment.course.progress(enrollment.user), precision: 0) %></td>
         <td><%= link_to 'See Review', enrollment %></td>
-        <td><%= link_to 'Add Review', edit_enrollment_path(enrollment) %></td>
-        <td><%= link_to 'Delete Enrollment', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if policy(enrollment).edit? %>
+          <td><%= link_to 'Add Review', edit_enrollment_path(enrollment) %></td>
+        <% end %>
+        <% if policy(enrollment).destroy? %>
+          <td><%= link_to 'Delete Enrollment', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

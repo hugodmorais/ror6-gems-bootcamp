@@ -1,0 +1,4 @@
+<li class="list-group-item">
+  <%= lesson.viewed(current_user) ? content_tag(:i, "", class: "fa fa-check-square", style: "color:green;") : content_tag(:i, "", class: "fa fa-times", style: "color:red;") %>
+  <%= link_to lesson.title, course_lesson_path(lesson) %>
+</li>

@@ -3,18 +3,26 @@
 </p> 
 
 <div class="row">
-  <div class="col-md-6">
-    <%= render 'courses/course', course: @course %>
+  <div class="col-md-8 order-1 order-lg-0">
+    <div class="jumbotron">
+      <h2>
+        <i class="fa fa-graduation-cap"></i> <%= @course.title %>
+      </h2>
+      <p class="pt-3"><i class="fa fa-clock"></i> <%= @course.updated_at.strftime("%b/%Y") %></p>
+      <p><i class="fa fa-globe-africa"></i> <%= @course.language %></p>
+      <p><i class="fa fa-signal"></i> <%= @course.level %></p>
+      <p class="pt-3"><%= @course.description %></p>
+    </div>
+    <ul class="list-group pt-2">
+      <% @lessons.each do |lesson| %>
+        <%= render 'lessons/lesson_preview', lesson: lesson %>
+      <% end %>
+    </ul>
   </div>
-  <div class="col-md-6">
-    <% if policy(@course).owner? %>
-      <div class="row px-2">
-        <%= link_to 'Add lesson', new_course_lesson_path(course_id: @course.id), class: 'btn btn-sm btn-primary btn-block' %>
-      </div>
-    <% end %>
-    <% @lessons.each do |lesson| %>
-      <%= render 'lessons/lesson', lesson: lesson %>
-    <% end %>
+  <div class="col-md-4 order-0 order-lg-1">
+    <div class="sticky-top pb-2">
+      <%= render 'courses/course', course: @course %>
+    </div>
   </div>
 </div>
 
