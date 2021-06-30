@@ -23,7 +23,9 @@
     </div>
     <ul class="list-group pt-2">
       <% @lessons.each do |lesson| %>
-        <%= render 'lessons/lesson_preview', lesson: lesson %>
+        <li class="list-group-item">
+          <%= render 'lessons/lesson_preview', lesson: lesson %>
+        </li>
       <% end %>
     </ul>
 
@@ -34,12 +36,12 @@
       </div>
     </div>
     <div class="row">
-        <% @enrollments_with_review.each do |enrollment| %>
-          <div class="col-sm-12">
-            <%= render 'enrollments/enrollment', enrollment: enrollment %>
-          </div>
-        <% end %>
-      </div>
+      <% @enrollments_with_review.each do |enrollment| %>
+        <div class="col-sm-12">
+          <%= render 'enrollments/enrollment', enrollment: enrollment %>
+        </div>
+      <% end %>
+    </div>
   </div>
   <div class="col-md-4 order-0 order-lg-1">
     <div class="sticky-top pb-2">
