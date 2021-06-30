@@ -17,7 +17,7 @@
     <div class="d-flex justify-content-between pt-3">
       <div>
         <h4><i class="fa fa-tasks"></i> 
-        Lessons: <%= @course.lessons_count %></h4>
+        <%= pluralize(@course.lessons_count, 'lesson') %>
       </div>
       <div><h4><%= number_to_percentage(@course.progress(current_user), precision: 0) %></h4></div>
     </div>
@@ -30,7 +30,7 @@
     <div class="d-flex justify-content-between pt-3">
       <div>
         <h4><i class="fa fa-comment"></i> 
-        Reviews: <%= @enrollments_with_review.count %></h4>
+        <%= pluralize(@enrollments_with_review.count, 'review') %>
       </div>
     </div>
     <div class="row">
