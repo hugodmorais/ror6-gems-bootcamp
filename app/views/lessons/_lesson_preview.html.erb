@@ -1,4 +1,14 @@
 <li class="list-group-item">
-  <%= lesson.viewed(current_user) ? content_tag(:i, "", class: "fa fa-check-square", style: "color:green;") : content_tag(:i, "", class: "fa fa-times", style: "color:red;") %>
-  <%= link_to lesson.title, course_lesson_path(lesson) %>
+  <div class="d-flex justify-content-between">
+    <div>
+      <%= lesson.viewed(current_user) ? content_tag(:i, "", class: "fa fa-check-square", style: "color:green;") : content_tag(:i, "", class: "fa fa-times", style: "color:red;") %>
+      <%= link_to lesson.title, course_lesson_path(@course, lesson) %>
+    </div>
+    <div>
+      <% if policy(lesson).edit? %>
+        <%= link_to 'Edit', edit_course_lesson_path(@course, lesson), class: 'btn btn-sm btn-warning' %>
+        <%= link_to 'Destroy', [@course, lesson], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+      <% end %>
+    </div>
+  </div>
 </li>

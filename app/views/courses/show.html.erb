@@ -5,19 +5,41 @@
 <div class="row">
   <div class="col-md-8 order-1 order-lg-0">
     <div class="jumbotron">
-      <h2>
+      <h2 class="pb-4">
         <i class="fa fa-graduation-cap"></i> <%= @course.title %>
       </h2>
-      <p class="pt-3"><i class="fa fa-clock"></i> <%= @course.updated_at.strftime("%b/%Y") %></p>
-      <p><i class="fa fa-globe-africa"></i> <%= @course.language %></p>
-      <p><i class="fa fa-signal"></i> <%= @course.level %></p>
-      <p class="pt-3"><%= @course.description %></p>
+      <h6 class="pt-3"><i class="fa fa-clock"></i> <%= @course.updated_at.strftime("%b/%Y") %></h6>
+      <h6><i class="fa fa-globe-africa"></i> <%= @course.language %></h6>
+      <h6><i class="fa fa-signal"></i> <%= @course.level %></h6>
+      <p class="pt-1"><%= @course.description %></p>
+    </div>
+
+    <div class="d-flex justify-content-between pt-3">
+      <div>
+        <h4><i class="fa fa-tasks"></i> 
+        Lessons: <%= @course.lessons_count %></h4>
+      </div>
+      <div><h4><%= number_to_percentage(@course.progress(current_user), precision: 0) %></h4></div>
     </div>
     <ul class="list-group pt-2">
       <% @lessons.each do |lesson| %>
         <%= render 'lessons/lesson_preview', lesson: lesson %>
       <% end %>
     </ul>
+
+    <div class="d-flex justify-content-between pt-3">
+      <div>
+        <h4><i class="fa fa-comment"></i> 
+        Reviews: <%= @enrollments_with_review.count %></h4>
+      </div>
+    </div>
+    <div class="row">
+        <% @enrollments_with_review.each do |enrollment| %>
+          <div class="col-sm-12">
+            <%= render 'enrollments/enrollment', enrollment: enrollment %>
+          </div>
+        <% end %>
+      </div>
   </div>
   <div class="col-md-4 order-0 order-lg-1">
     <div class="sticky-top pb-2">
