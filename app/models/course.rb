@@ -10,7 +10,7 @@ class Course < ApplicationRecord
 
   belongs_to :user, counter_cache: true
   has_many :lessons, dependent: :destroy
-  has_many :enrollments
+  has_many :enrollments, dependent: :restrict_with_error
   has_many :user_lessons, through: :lessons
 
   scope :latest_courses, -> { limit(3).order(created_at: :desc) }
