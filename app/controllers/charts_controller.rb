@@ -10,4 +10,8 @@ class ChartsController < ApplicationController
   def course_popularity
     render json: Enrollment.joins(:course).group(:'courses.title').count
   end
+
+  def money_makers
+    render json: Enrollment.joins(:course).group(:'courses.title').sum(:price)
+  end
 end
