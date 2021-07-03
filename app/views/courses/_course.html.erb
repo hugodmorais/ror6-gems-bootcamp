@@ -36,5 +36,12 @@
       <%= link_to 'Edit', edit_course_path(course), class: 'btn btn-sm btn-warning' if policy(course).edit? %>
       <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' if policy(course).destroy? %>
     </div>
+    <div class="card-footer">
+      <% if course.published? %>
+        <span class="badge badge-pill badge-dark" style="background-color:green">Published</span>
+      <% else %>
+        <span class="badge badge-pill badge-dark" style="background-color:red">Unpublished</span>
+      <% end %>
+    </div>
   <% end %>
 </div>

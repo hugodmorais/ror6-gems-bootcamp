@@ -12,6 +12,9 @@
     <%= f.input :language, collection: Course.languages, include_blank: true %>
     <%= f.input :level, collection: Course.levels, include_blank: true %>
     <%= f.input :price %>
+    <div class="row pt-2">
+      <%= f.input :published %>
+    </div>
   </div>
 
   <div class="form-actions pt-3">
