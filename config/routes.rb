@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   end
   devise_for :users
   resources :courses do
-    get :purchased, :pending_review, :created_courses, on: :collection
+    get :purchased, :pending_review, :created_courses, :unapproved, on: :collection
+    member do
+      patch :approve
+      patch :unapprove
+    end
     resources :enrollments, only: [:new, :create]
     resources :lessons
   end

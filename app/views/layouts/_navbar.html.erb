@@ -86,6 +86,16 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
+                  <%= link_to unapproved_courses_path, class: 'dropdown-item' do %>
+                    <i class="fa fa-graduation-cap"></i>
+                    Unapproved courses
+                    <span class="badge" style="background-color: red;">
+                      <%= Course.unapproved.count %>
+                    </span>
+                  <% end %>
+                </li>
+                <hr>
+                <li>
                   <%= link_to users_path, class: 'dropdown-item' do %>
                     <i class="fa fa-users"></i>
                     Users

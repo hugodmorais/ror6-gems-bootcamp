@@ -38,10 +38,22 @@
     </div>
     <div class="card-footer">
       <% if course.published? %>
-        <span class="badge badge-pill badge-dark" style="background-color:green">Published</span>
+        <span class="badge badge-pill badge-dark" style="background-color:green">published</span>
       <% else %>
-        <span class="badge badge-pill badge-dark" style="background-color:red">Unpublished</span>
+        <span class="badge badge-pill badge-dark" style="background-color:red">unpublished</span>
       <% end %>
+      <% if course.approved? %>
+        <span class="badge badge-pill badge-dark" style="background-color:green">approved</span>
+      <% else %>
+        <span class="badge badge-pill badge-dark" style="background-color:red">unapproved</span>
+      <% end %>      
+    </div>
+    <div class="card-footer">
+      <% if course.approved? %>
+        <%= link_to 'unapprove', unapprove_course_path(course), method: :patch, class: 'btn btn-sm btn-danger' if policy(course).approve?  %>
+      <% else %>
+        <%= link_to 'approve', approve_course_path(course), method: :patch, class: 'btn btn-sm btn-success' if policy(course).approve? %>
+      <% end %>      
     </div>
   <% end %>
 </div>
