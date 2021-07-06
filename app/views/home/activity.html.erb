@@ -17,6 +17,7 @@
         <%= link_to activity.trackable, activity.trackable %>
       <% end %>
       <%= activity.key %>
+      <%= crud_label(activity.key.match(/\.(.*)/)[1]) %>
       by
       <%= link_to activity.owner, user_path(activity.owner) if activity.owner.present?%>
       <%= activity.parameters if  activity.parameters.any? %>
