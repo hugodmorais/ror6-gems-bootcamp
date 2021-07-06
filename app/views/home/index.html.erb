@@ -1,4 +1,3 @@
-<%= line_chart User.group_by_day(:created_at).count %>
 <div class="row align-items-md-stretch">
   <div class="col-md-12">
     <div class="h-100 p-5 text-white bg-dark rounded-3">
@@ -46,16 +45,17 @@
 </div>
 
 <hr>
-
-<h2><i class="fa fa-user-graduate"></i> Continue Learning</h2>
-<div class="row">
-  <% @purchased.each do |course| %>
-    <div class="col-sm-4 pt-4">
-      <%= render 'courses/course', course: course %>
-    </div>
-  <% end %>
-</div>
-<hr>
+<% if current_user %>
+  <h2><i class="fa fa-user-graduate"></i> Continue Learning</h2>
+  <div class="row">
+    <% @purchased.each do |course| %>
+      <div class="col-sm-4 pt-4">
+        <%= render 'courses/course', course: course %>
+      </div>
+    <% end %>
+  </div>
+  <hr>
+<% end %>
 <h2><i class="fa fa-chart-line"></i> Popular courses</h2>
 <div class="row">
   <% @popular.each do |course| %>

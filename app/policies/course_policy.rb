@@ -13,7 +13,7 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def edit?
-    @record.user == @user
+    @user.present? && @record.user == @user
   end
 
   def update?

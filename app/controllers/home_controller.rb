@@ -3,9 +3,9 @@ class HomeController < ApplicationController
 
   def index
     @latest_good_reviews = Enrollment.reviewed.latest_good_reviews
-    @latest = Course.latest_courses
-    @top_rated = Course.top_rated
-    @popular = Course.popular
+    @latest = Course.latest_courses.published.approved
+    @top_rated = Course.top_rated.published.approved
+    @popular = Course.popular.published.approved
     @purchased = Course.joins(:enrollments).where(enrollments: { user: current_user}).order(created_at: :desc).limit(3)
   end
 
