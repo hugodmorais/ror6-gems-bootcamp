@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
-  before_action :set_course, only: %i[show edit update destroy approve unapprove]
+  before_action :set_course, only: %i[show edit update destroy approve unapprove analytics]
 
   # GET /courses or /courses.json
   def index
@@ -98,6 +98,10 @@ class CoursesController < ApplicationController
     @ransack_courses = Course.unapproved.ransack(params[:courses_search], search_key: :courses_search)
     @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
     render 'index'
+  end
+
+  def analytics
+
   end
 
   def approve
