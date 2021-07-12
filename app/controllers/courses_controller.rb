@@ -101,7 +101,7 @@ class CoursesController < ApplicationController
   end
 
   def analytics
-
+    authorize @course, :owner?
   end
 
   def approve
