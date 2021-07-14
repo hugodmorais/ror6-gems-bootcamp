@@ -2,7 +2,7 @@
   <div>
     <%= lesson.viewed(current_user) ? content_tag(:i, "", class: "fa fa-check-square", style: "color:green;") : content_tag(:i, "", class: "fa fa-times", style: "color:red;") %>
     <%= link_to course_lesson_path(@course, lesson) do %>
-      <%= lesson.row_order_rank + 1 %>
+      <%= lesson.row_order_rank + 1 %>.
       <%= lesson.title %>
     <% end %>
   </div>
