@@ -21,11 +21,13 @@
       </div>
       <div><h4><%= number_to_percentage(@course.progress(current_user), precision: 0) %></h4></div>
     </div>
-    <ul class="list-group pt-2">
+    <ul class="list-group pt-2 lesson-sortable">
       <% @lessons.each do |lesson| %>
-        <li class="list-group-item">
-          <%= render 'lessons/lesson_preview', lesson: lesson %>
-        </li>
+        <%= content_tag "div", id: "lesson-#{lesson.id}", data: { model_name: lesson.class.name.underscore, update_url: course_lesson_sort_path(@course, lesson)} do %>
+          <li class="list-group-item">
+            <%= render 'lessons/lesson_preview', lesson: lesson %>
+          </li>
+        <% end %>
       <% end %>
     </ul>
 
