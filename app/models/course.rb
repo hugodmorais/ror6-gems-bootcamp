@@ -3,6 +3,7 @@ class Course < ApplicationRecord
   tracked owner: Proc.new { |controller, model| controller&.current_user }
 
   has_rich_text :description
+  has_one_attached :avatar
   
   validates :title, :short_description, :language, :price, :level, presence: true
   validates :description, presence: true, length: { minimum: 5 }
