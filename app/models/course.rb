@@ -5,10 +5,13 @@ class Course < ApplicationRecord
   has_rich_text :description
   has_one_attached :avatar
   
-  validates :title, :short_description, :language, :price, :level, presence: true
-  validates :description, presence: true, length: { minimum: 5 }
-  validates :title, uniqueness: true
-  validates :avatar, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'], size: { less_than: 1000.kilobytes, message: 'size should be under 1000 kilobytes' }
+  validates :title, :description, :short_description, :language, :price, :level, presence: true
+  validates :description, length: { minimum: 5 }
+  validates :short_description, length: { maximum: 300 }
+  validates :title, uniqueness: true, length: { maximum: 70 }
+  validates :price, numericality: { greater_than_or_equal_to: 0 }
+  validates :avatar, presence: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'], size: { less_than: 1000.kilobytes, message: 'size should be under 1000 kilobytes' }
+  # validates :avatar, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'], size: { less_than: 1000.kilobytes, message: 'size should be under 1000 kilobytes' }
 
   belongs_to :user, counter_cache: true
   has_many :lessons, dependent: :destroy
