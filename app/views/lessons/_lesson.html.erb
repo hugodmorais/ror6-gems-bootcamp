@@ -6,9 +6,16 @@
   <% if policy(lesson).show? %>
     <div class="card-body">
       <div class="row">
-      <% if lesson.video.present? %>
-        <%= video_tag rails_blob_url(lesson.video), :controls => true %>
-      <% end %>
+        <% if @lesson.video.attached? %>
+          <% if @lesson.video_thumbnail.attached? %>
+            <%= video_tag rails_blob_url(@lesson.video), :poster => url_for(@lesson.video_thumbnail), :controls => true, width: '100%' %>
+          <% else %>
+            <%= video_tag rails_blob_url(@lesson.video), :controls => true, width: '100%' %>
+          <% end %>
+          <% if policy(lesson).edit? %>
+            <%= link_to 'Remove video and thumbnail', delete_video_course_lesson_path(@course, lesson), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        <% end %>
       </div>
       <%= lesson.content %>
     </div>
