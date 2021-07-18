@@ -4,6 +4,9 @@
   <% elsif blob.video? %>
     <%= video_tag rails_blob_url(blob), :controls => true, width: '100%' %>
   <% end %>
+  <% if blob.audio? %>
+    <%= audio_tag rails_blob_url(blob), autoplay: true, controls: true %>
+  <% end %>
 
   <figcaption class="attachment__caption">
     <% if caption = blob.try(:caption) %>
