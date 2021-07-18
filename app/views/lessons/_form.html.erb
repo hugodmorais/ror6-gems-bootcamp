@@ -8,6 +8,24 @@
     <%= f.label :content %>
     <%= f.rich_text_area :content %>
     <small><%= f.error :content, class: 'text-danger' %></small>
+    <% if @lesson.video.attached? %>
+      <%#= image_tag @course.avatar, width: "200px", class: "pt-2" %>
+      <div class="row">
+        <div class="col-md-12">
+          <%= @lesson.video.filename %>
+        </div>
+      </div>
+    <% end %>
+    <%= f.input :video %>
+    <% if @lesson.video_thumbnail.attached? %>
+      <%#= image_tag @course.avatar, width: "200px", class: "pt-2" %>
+      <div class="row">
+        <div class="col-md-12">
+          <%= @lesson.video_thumbnail.filename %>
+        </div>
+      </div>
+    <% end %>
+    <%= f.input :video_thumbnail %>
     <%= f.input :course_id, input_html: { value: @lesson.course_id || params[:course_id]}, as: :hidden %>
   </div>
 
