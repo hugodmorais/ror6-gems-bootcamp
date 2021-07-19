@@ -8,7 +8,8 @@
       <div class="row">
         <% if @lesson.video.attached? %>
           <% if @lesson.video_thumbnail.attached? %>
-            <%= video_tag rails_blob_url(@lesson.video), :poster => url_for(@lesson.video_thumbnail), :controls => true, width: '100%' %>
+            <%#= video_tag rails_blob_url(@lesson.video), :poster => url_for(@lesson.video_thumbnail), id: 'my-video' %>
+            <%= video_tag rails_blob_url(@lesson.video), :poster => url_for(@lesson.video_thumbnail) %>
           <% else %>
             <%= video_tag rails_blob_url(@lesson.video), :controls => true, width: '100%' %>
           <% end %>
