@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :youtube, only: :show
+  
   resources :enrollments do
     get :my_students, on: :collection
   end

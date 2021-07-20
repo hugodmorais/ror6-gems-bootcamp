@@ -5,9 +5,7 @@
 
   <div class="form-inputs">
     <%= f.input :title %>
-    <%= f.label :content %>
-    <%= f.rich_text_area :content %>
-    <small><%= f.error :content, class: 'text-danger' %></small>
+    <%= f.input :content, as: :rich_text_area %>
     <% if @lesson.video.attached? %>
       <%#= image_tag @course.avatar, width: "200px", class: "pt-2" %>
       <div class="row">

@@ -20,9 +20,7 @@
     <div class="row pt-2 pb-2">
       <%= f.input :avatar %>
     </div>
-    <%= f.label :description %>
-    <%= f.rich_text_area :description %>
-    <small><%= f.error :description, class: 'text-danger' %></small>
+    <%= f.input :description, as: :rich_text_area %>
     <%= f.input :short_description %>
     <%= f.input :language, collection: Course.languages, include_blank: true %>
     <%= f.input :level, collection: Course.levels, include_blank: true %>

@@ -26,6 +26,7 @@ require("jquery-ui-dist/jquery-ui");
 
 // import videojs from 'video.js';
 // import 'video.js/dist/video-js.css';
+import 'youtube';
 
 $(document).on('turbolinks:load', function() {
   $('.lesson-sortable').sortable({
