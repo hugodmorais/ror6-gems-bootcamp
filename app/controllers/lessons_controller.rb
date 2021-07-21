@@ -9,6 +9,8 @@ class LessonsController < ApplicationController
     authorize @lesson
     current_user.view_lesson(@lesson)
     @lessons = @course.lessons
+    @comment = Comment.new
+    @comments = @lesson.comments
   end
 
   def new

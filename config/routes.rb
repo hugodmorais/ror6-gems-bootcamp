@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :youtube, only: :show
-  
+
   resources :enrollments do
     get :my_students, on: :collection
   end
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     end
     resources :enrollments, only: [:new, :create]
     resources :lessons do
+      resources :comments
       put :sort
       member do
         delete :delete_video

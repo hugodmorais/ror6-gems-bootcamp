@@ -1,0 +1,8 @@
+<div class="card mt-2">
+  <div class="card-body">
+    <%= comment.content %>
+  </div>
+  <div class="card-footer">
+    <%= comment.user %> - <%= comment.created_at.strftime("%d/%b/%Y - %H:%M")  %> h
+  </div>
+</div>

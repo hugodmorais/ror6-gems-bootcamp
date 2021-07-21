@@ -12,7 +12,7 @@
   <% end %>
 </p> 
 
-<div class="row">
+<div class="row pb-4">
   <div class="col-md-8">
     <%= render 'lessons/lesson', lesson: @lesson %>
   </div>
@@ -38,3 +38,14 @@
     </ul>
   </div>
 </div>
+
+All Comments:
+<% @comments.each do |comment| %>
+  <%= render 'lessons/comments/comment', comment: comment %>
+<% end %>
+
+<div class="pt-4">
+  New comment:
+  <%= render 'lessons/comments/form' %>
+</div>
+
