@@ -15,6 +15,22 @@
 <div class="row pb-4">
   <div class="col-md-8">
     <%= render 'lessons/lesson', lesson: @lesson %>
+
+    <div class="pt-4 pb-4">
+      <h4><i class="fa fa-comment"></i> Comments: <%= @lesson.comments_count %></h4>
+      <div class="card mt-2">
+        <div class="card-header">
+          New comment:
+        </div>
+        <div class="card-body">
+          <%= render 'lessons/comments/form' %>
+        </div>
+      </div>
+    </div>
+
+    <% @comments.each do |comment| %>
+      <%= render 'lessons/comments/comment', comment: comment %>
+    <% end %>
   </div>
   <div class="col-md-4">
     <ul class="list-group pt-2"> 
@@ -39,13 +55,5 @@
   </div>
 </div>
 
-All Comments:
-<% @comments.each do |comment| %>
-  <%= render 'lessons/comments/comment', comment: comment %>
-<% end %>
 
-<div class="pt-4">
-  New comment:
-  <%= render 'lessons/comments/form' %>
-</div>
 

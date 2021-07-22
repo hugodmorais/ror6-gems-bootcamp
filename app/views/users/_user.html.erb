@@ -19,12 +19,25 @@
   </div>
   <div class="card-footer">
     <div class="row">
-      Courses created:
-      <%= user.courses_count %>
+      <div>
+        <i class="fas fa-graduation-cap"></i>
+        Courses created:
+        <%= user.courses_count %>
+      </div>
     </div>
     <div class="row">
-      Enrollments:
-      <%= user.enrollments_count %>
+      <div>
+        <i class="fa fa-unlock"></i>
+        Enrollments:
+        <%= user.enrollments_count %>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <i class="fa fa-comment"></i>
+        Comments:
+        <%= user.comments_count %>
+      </div>
     </div>
   </div>
   <div class="card-footer">
