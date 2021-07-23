@@ -8,10 +8,16 @@
       <%= activity.trackable_type %>
       <%= activity.trackable_id %>
       <% if activity.trackable_type == 'Lesson' %>
-        <% if Lesson.where(id: activity.trackable_id.present?) %>
+        <% if Lesson.where(id: activity.trackable_id).present? %>
           <%= link_to activity.trackable, course_lesson_path(activity.trackable.course, activity.trackable) %>
         <% else %>
           Lesson was deleted!
+        <% end %>
+      <% elsif activity.trackable_type == 'Comment' %>
+        <% if Comment.where(id: activity.trackable_id).present? %>
+          <%= link_to activity.trackable, course_lesson_path(activity.trackable.lesson.course, activity.trackable.lesson) %>
+        <% else %>
+          Comment was deleted!
         <% end %>
       <% else %>
         <%= link_to activity.trackable, activity.trackable %>
