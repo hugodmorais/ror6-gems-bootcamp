@@ -15,6 +15,23 @@
  */
  @import "./actiontext.scss";
 
+ body { 
+   background-color: #2a4054 !important;
+   color: #ebedf0 !important;;
+ }
+
+ .navbar {
+  background-color: #02313E !important;
+ }
+
+ footer {
+  background-color: #02313E !important;
+ }
+
+ .card, .jumbotron, .list-group-item {
+   color: #2a4054 !important
+ }
+
  .form-control.is-invalid{ background-image: none; }
  .form-control.is-valid{ background-image: none; }
 
