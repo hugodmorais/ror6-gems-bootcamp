@@ -32,5 +32,6 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'activity', to: 'home#activity'
   get 'analytics', to: 'home#analytics'
+  get 'privacy_policy', to: 'home#privacy_policy'
   root 'home#index'
 end
