@@ -2,7 +2,7 @@
   <% if blob.representable? %>
     <%= image_tag blob.representation(resize_to_limit: local_assigns[:in_gallery] ? [ 800, 600 ] : [ 1024, 768 ]) %>
   <% elsif blob.video? %>
-    <%= video_tag rails_blob_url(blob), :controls => true, width: '100%' %>
+    <%= video_tag rails_blob_url(blob), :controls => true, controlslist: "nodownload", width: '100%' %>
   <% end %>
   <% if blob.audio? %>
     <%= audio_tag rails_blob_url(blob), autoplay: true, controls: true %>
