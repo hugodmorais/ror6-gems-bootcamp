@@ -72,3 +72,7 @@ gem 'ranked-model'
 gem 'active_storage_validations'
 gem 'image_processing'
 gem 'recaptcha'
+
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-google-oauth2'
