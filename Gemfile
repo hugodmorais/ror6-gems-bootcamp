@@ -58,7 +58,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'simple_form'
 gem 'faker'
-gem 'devise'
+gem 'devise', github: 'heartcombo/devise', branch: 'master'
 gem 'friendly_id', '~> 5.4.0'
 gem 'ransack'
 gem 'public_activity'
