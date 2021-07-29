@@ -14,6 +14,8 @@
  *= require_self
  */
  @import "./actiontext.scss";
+ @import "selectize/dist/css/selectize";
+ @import "selectize/dist/css/selectize.default";
 
  body { 
    background-color: #2a4054 !important;

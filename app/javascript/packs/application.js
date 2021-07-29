@@ -8,7 +8,7 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "chartkick/chart.js"
-import "../trix-editor-overrides"
+import "../trix-editor-overrides" 
 
 Rails.start()
 Turbolinks.start()
@@ -24,6 +24,8 @@ require("@rails/actiontext")
 require("jquery");
 require("jquery-ui-dist/jquery-ui");
 
+// selectize
+require("selectize");
 // import videojs from 'video.js';
 // import 'video.js/dist/video-js.css';
 import 'youtube';
@@ -67,4 +69,10 @@ $(document).on('turbolinks:load', function() {
   $("video").bind("contextmenu", function() {
     return false;
   })
+
+  if ($('.selectize')) {
+    $('.selectize').selectize({
+      sortField: 'text'
+    });
+  }
 });

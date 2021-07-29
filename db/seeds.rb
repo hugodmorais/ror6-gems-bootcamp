@@ -15,6 +15,4 @@ User.create!(email: 'admin@admin.com', password: '123456', password_confirmation
   course.avatar.attach(io: File.open(Rails.root.join('app/assets/images/products-online-courses.png')),
   filename: 'course.jpg')
   course.save
-
-  byebug
 end

@@ -5,6 +5,10 @@
 
   <div class="form-inputs">
     <%= f.input :title %>
+    <div class="row">
+      <%= f.label :tag %>
+      <%= f.select :tag_ids, Tag.all.pluck(:name, :id), {}, { multiple: true, class: "selectize" } %>
+    </div>
     <div class="row pt-2">
       <% if @course.avatar.attached? %>
         <div class="col-md-4">
