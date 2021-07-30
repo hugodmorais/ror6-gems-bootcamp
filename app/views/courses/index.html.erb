@@ -6,6 +6,8 @@
     <%= search_form_for @ransack_courses, as: :courses_search, url: @ransack_path do |f| %>
       <%= f.label :title %>
       <%= f.search_field :title_cont, placeholder: 'title', class: 'form-control form-control-sm' %>
+      <%= f.label :tag %>
+      <%= f.search_field :course_tags_tag_name_cont %>
       <%= f.label :description %>
       <%= f.search_field :short_description_cont, placeholder: 'description', class: 'form-control form-control-sm' %>
       <div class="row">
@@ -37,8 +39,19 @@
       </div>
       <%= f.submit %>
 
-      <%= link_to @ransack_path, class: 'btn btn-sm btn-primary mb-1' do %>
-        <i class="fa fa-sync"></i>
+      <div class="row">
+        <div class="col-md-6">
+          <%= link_to @ransack_path, class: 'btn btn-sm btn-primary mb-1' do %>
+            <i class="fa fa-sync"></i>
+          <% end %>
+        </div>
+      </div>
+      
+      <% @tags.each do |tag| %>
+        <span class="badge badge-info" style="background-color: blue;">
+          <%= tag.name %>
+          <%= tag.course_tags_count %>
+        </span>
       <% end %>
     <% end %>
   </div>
@@ -50,6 +63,7 @@
         </div>
       <% end %>
     </div>
+
     <div class="row pt-5">
       <div class="d-flex justify-content-center"><%== pagy_bootstrap_nav(@pagy) %></div>
     </div>

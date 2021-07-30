@@ -1,13 +1,14 @@
 class CoursesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :set_course, only: %i[show edit update destroy approve unapprove analytics]
+  before_action :load_references, only: %i[index new create show edit update destroy approve unapprove analytics]
 
   # GET /courses or /courses.json
   def index
     @ransack_path = courses_path
     @ransack_courses = Course.published.approved.ransack(params[:courses_search], search_key: :courses_search)
-
-    @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
+    @tags = Tag.all.order(course_tags_count: :desc)
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, :course_tags => :tags))
   end
 
   # GET /courses/1 or /courses/1.json
@@ -120,6 +121,10 @@ class CoursesController < ApplicationController
   
   def set_course
     @course = Course.friendly.find(params[:id])
+  end
+
+  def load_references
+    @tags = Tag.all.order(course_tags_count: :desc)
   end
 
   def course_params
