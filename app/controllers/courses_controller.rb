@@ -8,7 +8,8 @@ class CoursesController < ApplicationController
     @ransack_path = courses_path
     @ransack_courses = Course.published.approved.ransack(params[:courses_search], search_key: :courses_search)
     @tags = Tag.all.order(course_tags_count: :desc)
-    @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, :course_tags => :tags))
+    
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, :course_tags => :tag))
   end
 
   # GET /courses/1 or /courses/1.json
@@ -76,28 +77,29 @@ class CoursesController < ApplicationController
   def purchased
     @ransack_path = purchased_courses_path
     @ransack_courses = Course.joins(:enrollments).where(enrollments: { user: current_user }).ransack(params[:courses_search], search_key: :courses_search)
-    @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, :course_tags => :tag))
     render 'index'
   end
 
   def pending_review
     @ransack_path = pending_review_courses_path
     @ransack_courses = Course.joins(:enrollments).merge(Enrollment.pending_review).where(user: current_user).ransack(params[:courses_search], search_key: :courses_search)
-    @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, :course_tags => :tag))
     render 'index'
   end
 
   def created_courses
     @ransack_path = created_courses_courses_path
     @ransack_courses = Course.where(user: current_user).ransack(params[:courses_search], search_key: :courses_search)
-    @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, :course_tags => :tag))
     render 'index'
   end
 
   def unapproved
     @ransack_path = unapproved_courses_path
+    @tags = Tag.all.order(course_tags_count: :desc)
     @ransack_courses = Course.unapproved.ransack(params[:courses_search], search_key: :courses_search)
-    @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, :course_tags => :tag))
     render 'index'
   end
 
