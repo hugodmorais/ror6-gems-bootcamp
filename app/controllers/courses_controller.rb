@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :set_course, only: %i[show edit update destroy approve unapprove analytics]
-  before_action :load_references, only: %i[index new create show edit update destroy approve unapprove analytics]
+  before_action :load_references, only: %i[index new create show edit update created_courses destroy approve unapprove analytics]
 
   # GET /courses or /courses.json
   def index

@@ -7,7 +7,7 @@
       <%= f.label :title %>
       <%= f.search_field :title_cont, placeholder: 'title', class: 'form-control form-control-sm' %>
       <%= f.label :tag %>
-      <%= f.search_field :course_tags_tag_name_cont %>
+      <%= f.search_field :course_tags_tag_name_cont, placeholder: 'tag name', class: 'form-control form-control-sm' %>
       <%= f.label :description %>
       <%= f.search_field :short_description_cont, placeholder: 'description', class: 'form-control form-control-sm' %>
       <div class="row">
@@ -47,11 +47,13 @@
         </div>
       </div>
       
-      <% @tags.each do |tag| %>
-        <span class="badge badge-info" style="background-color: blue;">
-          <%= tag.name %>
-          <%= tag.course_tags_count %>
-        </span>
+      <% @tags.all.order(course_tags_count: :desc).each do |tag| %>
+        <%= link_to courses_path(courses_search: {course_tags_tag_id_eq: tag.id}) do %>
+          <div class="badge badge-info" style="background-color: blue;">
+            <%= tag.name %>
+            <%= tag.course_tags_count %>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
   </div>
