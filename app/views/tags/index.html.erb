@@ -2,8 +2,10 @@ Tags
 
 <% @tags.each do |tag| %>
   <div class="row">
-    <%= tag.name %>
-    <%= tag.course_tags_count %>
-    <%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <div class="div">
+      <%= tag.name %>
+      <%= tag.course_tags_count %>
+      <%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
   </div>
 <% end %>
