@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     get :my_students, on: :collection
   end
   devise_for :users, :controllers => { registrations: 'users/registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
+  
+  resources :tags, only: :create
   resources :courses do
     get :purchased, :pending_review, :created_courses, :unapproved, on: :collection
     member do
