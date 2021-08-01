@@ -123,6 +123,13 @@
                 </li>
                 <hr>
                 <li class="nav-item">
+                  <%= link_to tags_path, class: 'dropdown-item' do %>
+                    <i class="fa fa-tags"></i>
+                    Tags
+                  <% end %>
+                </li>
+                <hr>
+                <li class="nav-item">
                   <%= link_to analytics_path, class: 'dropdown-item' do %>
                     <i class="fa fa-chart-line"></i>
                     Analytics

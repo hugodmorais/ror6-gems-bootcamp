@@ -7,7 +7,7 @@ class CoursesController < ApplicationController
   def index
     @ransack_path = courses_path
     @ransack_courses = Course.published.approved.ransack(params[:courses_search], search_key: :courses_search)
-    @tags = Tag.all.order(course_tags_count: :desc)
+    @tags = Tag.selected
     
     @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, :course_tags => :tag))
   end
@@ -97,7 +97,7 @@ class CoursesController < ApplicationController
 
   def unapproved
     @ransack_path = unapproved_courses_path
-    @tags = Tag.all.order(course_tags_count: :desc)
+    @tags = Tag.selected
     @ransack_courses = Course.unapproved.ransack(params[:courses_search], search_key: :courses_search)
     @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, :course_tags => :tag))
     render 'index'
@@ -126,7 +126,7 @@ class CoursesController < ApplicationController
   end
 
   def load_references
-    @tags = Tag.all.order(course_tags_count: :desc)
+    @tags = Tag.selected
   end
 
   def course_params
