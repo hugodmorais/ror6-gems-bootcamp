@@ -27,6 +27,7 @@
       <th><i class="fa fa-star" style="color:yellow"></i> Rating</th>
       <th><i class="fa fa-comment" style="color:yellow"></i> Review</th>
       <th>Progress</th>
+      <th>Certificate</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -43,6 +44,7 @@
         <td><%= enrollment.rating %></td>
         <td><%= enrollment.review %></td>
         <td><%= number_to_percentage(enrollment.course.progress(enrollment.user), precision: 0) %></td>
+        <td><%= link_to 'Certificate', certificate_enrollment_path(enrollment, format: :pdf) %></td>
         <td><%= link_to 'See Review', enrollment %></td>
         <% if policy(enrollment).edit? %>
           <td><%= link_to 'Add Review', edit_enrollment_path(enrollment) %></td>

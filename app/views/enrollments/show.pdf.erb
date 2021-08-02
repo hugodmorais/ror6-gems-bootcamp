@@ -1,0 +1,31 @@
+<center>
+  <h1>
+    Certificate of Completion
+  </h1>
+</center>
+<p></p>
+<center>
+  This is to certify that the owner of the email address
+  <b>
+    <%= @enrollment.user.email %>
+  </b>
+  has successfully completed the course
+  <b>
+    <%= @enrollment.course.title %>
+  </b>
+  on the Ruby platform
+</center>
+<p></p>
+<b>Certificate id:</b>
+<%= @enrollment.slug %>
+<p></p>
+<b>Certificate url:
+  <%= request.base_url %><%= request.original_fullpath %>
+</b>
+<center>
+  <h3>
+    <%= image_tag wicked_pdf_asset_base64('logo.png'), height: "90", width: "auto" %>
+    <p></p>
+    www.ror6-gems.com
+  </h3>
+</center>

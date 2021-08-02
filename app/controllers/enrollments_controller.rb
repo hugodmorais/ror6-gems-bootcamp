@@ -1,5 +1,6 @@
 class EnrollmentsController < ApplicationController
-  before_action :set_enrollment, only: %i[ show edit update destroy ]
+  skip_before_action :authenticate_user!, only: [:certificate]
+  before_action :set_enrollment, only: %i[certificate show edit update destroy ]
   before_action :set_course, only: %i[new create]
 
   def index
@@ -7,6 +8,17 @@ class EnrollmentsController < ApplicationController
     @q = Enrollment.ransack(params[:q])
     @pagy, @enrollments = pagy(@q.result.includes(:user))
     authorize @enrollments
+  end
+
+  def certificate
+    respond_to do |format|
+      format.html 
+      format.pdf do
+        render pdf: "#{@enrollment.course.title}, #{@enrollment.user.email}",
+        page_size: 'A4',
+        template: "enrollments/show.pdf.erb"
+      end
+    end
   end
 
   def show
