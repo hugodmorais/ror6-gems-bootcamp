@@ -20,6 +20,7 @@
         <%= pluralize(@course.lessons_count, 'lesson') %>
       </div>
       <div><h4><%= number_to_percentage(@course.progress(current_user), precision: 0) %></h4></div>
+      <%= certificate_button(@course) %>
     </div>
     <ul class="list-group pt-2 lesson-sortable">
       <% @lessons.each do |lesson| %>
