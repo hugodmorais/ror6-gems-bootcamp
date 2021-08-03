@@ -1,31 +1,45 @@
 <center>
-  <h1>
-    Certificate of Completion
-  </h1>
-</center>
-<p></p>
-<center>
-  This is to certify that the owner of the email address
-  <b>
-    <%= @enrollment.user.email %>
-  </b>
-  has successfully completed the course
-  <b>
-    <%= @enrollment.course.title %>
-  </b>
-  on the Ruby platform
-</center>
-<p></p>
-<b>Certificate id:</b>
-<%= @enrollment.slug %>
-<p></p>
-<b>Certificate url:
-  <%= request.base_url %><%= request.original_fullpath %>
-</b>
-<center>
-  <h3>
-    <%= image_tag wicked_pdf_asset_base64('logo.png'), height: "90", width: "auto" %>
-    <p></p>
-    www.ror6-gems.com
-  </h3>
+  <div style="width:1200px; height:800px; padding:20px; text-align:center; border: 10px solid #563d77">
+    <div style="width:1150px; height:750px; padding:20px; text-align:center; border: 5px solid #563d77">
+      <br>
+      <br>
+      <br>
+      <center>
+        <h1>
+          Certificate of Completion
+        </h1>
+      </center>
+      <p></p>
+      <br>
+      <br>
+      <h2>
+        This is to certify that the owner of the email address
+        <b>
+          <%= @enrollment.user.email %>
+        </b>
+        has successfully completed the course
+        <b>
+          <%= @enrollment.course.title %>
+        </b>
+        on the Ruby platform
+      </h2>
+      <p></p>
+      <b>Certificate id:</b>
+      <%= @enrollment.slug %>
+      <p></p>
+      <br>
+      <br>
+      <br>
+      <b>Certificate url:
+        <%= request.base_url %><%= request.original_fullpath %>
+      </b>
+      <center>
+        <h3>
+          <%= image_tag wicked_pdf_asset_base64('logo.png'), height: "90", width: "auto" %>
+          <p></p>
+          www.ror6-gems.com
+        </h3>
+      </center>
+    </div>
+  </div>
 </center>
