@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       patch :approve
       patch :unapprove
     end
+    resources :course_wizard, controller: 'courses/course_wizard'
     resources :enrollments, only: [:new, :create]
     resources :lessons do
       resources :comments
@@ -27,7 +28,6 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: [:index, :edit, :show, :update]
-  resources :course_creator
   namespace :charts do
     get 'users_per_day'
     get 'enrollments_per_day'
