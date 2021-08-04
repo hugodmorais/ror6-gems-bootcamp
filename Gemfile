@@ -79,3 +79,4 @@ gem 'omniauth-google-oauth2'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary', group: :development
 gem 'wkhtmltopdf-heroku', group: :production
+gem 'wicked'

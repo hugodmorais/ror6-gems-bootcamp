@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: [:index, :edit, :show, :update]
-
+  resources :course_creator
   namespace :charts do
     get 'users_per_day'
     get 'enrollments_per_day'
