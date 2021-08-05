@@ -11,6 +11,14 @@
     </h5>
   </div>
   <div class="card-body">
+    <%= simple_form_for @course, url: course_course_wizard_path, method: :put do |f| %>
+      <%= f.input :title %>
+      <%= f.input :short_description %>
+      <%= f.input :language, collection: Course.languages, include_blank: true %>
+      <div class="form-actions pt-3">
+        <%= f.button :submit %>
+      </div>
+    <% end %>
   </div>
   <div class="card-footer">
     <div class="d-flex justify-content-between pt-3">

@@ -11,6 +11,20 @@
     </h5>
   </div>
   <div class="card-body">
+    <%= simple_form_for @course, url: course_course_wizard_path, method: :put do |f| %>
+      <%= f.input :level, collection: Course.levels, include_blank: true %>
+      <%= f.input :price, collection: [0, 9, 19, 49, 99, 149, 199], as: :radio_buttons %>
+      <div class="row">
+        <%= f.label :tag %>
+        <%= f.select :tag_ids, @tags.pluck(:name, :id), {}, { multiple: true, class: "selectize-tags" } %>
+      </div>
+      <div class="row pt-2">
+        <%= f.input :published %>
+      </div>
+      <div class="form-actions pt-3">
+        <%= f.button :submit %>
+      </div>
+    <% end %>
   </div>
   <div class="card-footer">
     <div class="d-flex justify-content-between pt-3">
