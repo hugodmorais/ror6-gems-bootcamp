@@ -14,12 +14,13 @@ class Course < ApplicationRecord
   # validates :avatar, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'], size: { less_than: 1000.kilobytes, message: 'size should be under 1000 kilobytes' }
 
   belongs_to :user, counter_cache: true
-  has_many :lessons, dependent: :destroy
+  has_many :lessons, dependent: :destroy, inverse_of: :course
   has_many :enrollments, dependent: :restrict_with_error
   has_many :user_lessons, through: :lessons
   has_many :course_tags, dependent: :destroy
   has_many :tags, through: :course_tags
 
+  accepts_nested_attributes_for :lessons, reject_if: :all_blank, allow_destroy: true
   scope :latest_courses, -> { limit(3).order(created_at: :desc) }
   scope :top_rated, -> { limit(3).order(average_rating: :desc, created_at: :desc) }
   scope :popular, -> { limit(3).order(enrollments_count: :desc, created_at: :desc) }

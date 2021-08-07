@@ -81,3 +81,4 @@ gem 'wkhtmltopdf-binary', group: :development
 gem 'wkhtmltopdf-heroku', group: :production
 gem 'wicked'
 gem 'letter_opener', group: :development
+gem 'cocoon'

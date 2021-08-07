@@ -1,0 +1,36 @@
+<div class="card">
+  <div class="progress">
+    <div class="progress-bar" style="width: <%= @progress %>%;"></div>
+  </div>
+  <div class="card-header">
+    <h5>
+      <%= wizard_steps.index(step) + 1 %>
+      /
+      <%= wizard_steps.count %>
+      <%= step.to_s.humanize %>
+    </h5>
+  </div>
+  <div class="card-body">
+    <%= simple_form_for @course, url: course_course_wizard_path, method: :put do |f| %>
+      <div id="lessons">
+        <%= f.simple_fields_for :lessons do |lesson| %>
+          <%= render 'lesson_fields', f:lesson %>
+        <% end %>
+        <div class="links">
+          <%= link_to_add_association 'add lesson', f, :lessons %>
+        </div>
+      </div>
+      <%= f.button :submit, "Save & Continue" %>
+    <% end %>
+  </div>
+  <div class="card-footer">
+    <div class="d-flex justify-content-between pt-3">
+      <%= link_to previous_wizard_path, class: 'btn btn-sm btn-info' do %>
+        <i class="fa fa-arrow-left"></i>
+      <% end %>
+      <%= link_to next_wizard_path, class: 'btn btn-sm btn-info' do %>
+        <i class="fa fa-arrow-right"></i>
+      <% end %>
+    </div>
+  </div>
+</div>
