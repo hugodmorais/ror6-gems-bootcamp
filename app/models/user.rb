@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :nullify
 
   after_create :assign_default_role
+  after_create :send_mailer
 
   extend FriendlyId
   friendly_id :generate_slug, use: :slugged
@@ -78,6 +79,10 @@ class User < ApplicationRecord
   end
 
   private
+
+  def send_mailer
+    UserMailer.new_user(self).deliver_later
+  end
 
   def must_have_a_role
     return if roles.any?
