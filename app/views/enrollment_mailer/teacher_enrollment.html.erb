@@ -1,0 +1,18 @@
+You have a new student in the course
+<%= link_to @enrollment.course, @ enrollment.course %>
+<div class="row"></div>
+Enrollment date:
+<%= @enrollment.created_at %>
+<div class="row"></div>
+Enrollment ID:
+<%= @enrollment.slug %>
+<div class="row"></div>
+Course price
+<%= @enrollment.course.price %>
+<div class="row"></div>
+Price paid:
+<%= @enrollment.price %>
+<div class="row"></div>
+Regards,
+<div class="row"></div>
+<%= link_to 'The Corsego team', root_url %>

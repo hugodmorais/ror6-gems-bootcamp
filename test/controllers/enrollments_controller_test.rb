@@ -11,7 +11,7 @@ class EnrollmentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_enrollment_url
+    get student_enrollment_url
     assert_response :success
   end
 
