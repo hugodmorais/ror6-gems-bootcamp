@@ -42,6 +42,11 @@ class Course < ApplicationRecord
     title
   end
 
+  def calculate_income
+    update_column :income, (enrollments.map(&:price).sum)
+    user.calculate_balance
+  end
+
   LANGUAGES = [:"English", :"Russian", :"Polish"]
 
   def self.languages
